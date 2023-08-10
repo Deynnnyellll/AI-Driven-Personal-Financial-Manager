@@ -473,7 +473,7 @@ class Dashboard:
     #----------------------------------------------- Show Graph ------------------------------------------------------->
     ####################################################################################################################
     def create_graph(self):
-        df = pd.read_csv("financial_data.csv")
+        df = pd.read_csv("dataset/financial_data.csv")
 
         plt.figure(figsize=(6, 4))
         plt.bar(["Monthly Income", "Total Expense"], [df["Monthly Income"][0], df["Total Expense"][0]], color=["#1e40af", "#115e59"])
@@ -517,7 +517,7 @@ class Dashboard:
     #----------------------------------------- Recording the Data to CSV file --------------------------->
 
         try:
-            with open('financial_data.csv', 'r', newline='') as csvFileRead:
+            with open('dataset/dataset/financial_data.csv', 'r', newline='') as csvFileRead:
                 reader = csv.DictReader(csvFileRead)
                 data = list(reader)
                 
@@ -538,7 +538,7 @@ class Dashboard:
             row['Monthly Income'] = row['Monthly Income']
             row['Total Expense'] = f"{total_expense:.2f}"
                     
-            with open('financial_data.csv', 'w', newline='') as csvfile:
+            with open('dataset/financial_data.csv', 'w', newline='') as csvfile:
                 fieldnames = ["Food", "Transportation", "Liabilities", "Electric Bill", "Water Bill", "Salary", "Other", "Monthly Income", "Total Expense"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
@@ -554,7 +554,7 @@ class Dashboard:
     ####################################################################################################################            
     def load_data_from_csv(self):
         try:
-            with open('financial_data.csv', newline='') as csvfile:
+            with open('dataset/dataset/financial_data.csv', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     total_expense = float(row['Total Expense'])
@@ -572,7 +572,7 @@ class Dashboard:
     ####################################################################################################################
     def load_data_from_csv_expense(self):
         try:
-            with open('financial_data.csv', newline='') as csvfile:
+            with open('dataset/dataset/financial_data.csv', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     self.foodLabelValue.config(text=f"{float(row['Food']):.2f}")
@@ -592,7 +592,7 @@ class Dashboard:
     ####################################################################################################################
     def load_data_from_csv_income(self):
         try:
-            with open('financial_data.csv', newline='') as csvfile:
+            with open('dataset/dataset/financial_data.csv', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     self.salaryLabelValue.config(text=f"{float(row['Salary']):.2f}")
@@ -626,7 +626,7 @@ class Dashboard:
         self.totalIncomeValue.config(text=f"{total_income:.2f}")
 
         try:
-            with open('financial_data.csv', 'r', newline='') as csvFileRead:
+            with open('dataset/dataset/financial_data.csv', 'r', newline='') as csvFileRead:
                 reader = csv.DictReader(csvFileRead)
                 data = list(reader)
                 
@@ -645,7 +645,7 @@ class Dashboard:
             row['Water Bill'] = row['Water Bill']
             row['Total Expense'] = row['Total Expense']
                     
-            with open('financial_data.csv', 'w', newline='') as csvfile:
+            with open('dataset/financial_data.csv', 'w', newline='') as csvfile:
                 fieldnames = ["Food", "Transportation", "Liabilities", "Electric Bill", "Water Bill", "Salary", "Other", "Monthly Income", "Total Expense"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
@@ -661,7 +661,7 @@ class Dashboard:
     ####################################################################################################################
     def predict_score(self):
         try:
-            with open('financial_data.csv', 'r', newline='') as file:
+            with open('dataset/financial_data.csv', 'r', newline='') as file:
                 reader = csv.DictReader(file)
                 data = list(reader)
 
